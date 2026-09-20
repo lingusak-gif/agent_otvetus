@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юридический ИИ-Консультант</title>
+    <meta http-equiv="refresh" content="30">
+    <style>
+        body { font-family: system-ui, sans-serif; background: #f0f2f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .card { background: white; border-radius: 16px; padding: 30px; max-width: 480px; width: 100%; box-shadow: 0 8px 24px rgba(0,0,0,0.12); text-align: center; }
+        .logo { font-size: 2.5em; margin-bottom: 15px; }
+        h1 { color: #1a1a2e; margin: 0 0 8px 0; font-size: 1.5em; }
+        .subtitle { color: #666; margin-bottom: 25px; }
+        
+        #link-box {
+            background: #e8f4fd;
+            border: 2px solid #2196f3;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+            word-break: break-all;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        #link-box.loading { color: #888; font-style: italic; }
+        #link-box.error { background: #ffebee; border-color: #f44336; color: #c62828; }
+        
+        .btn {
+            display: inline-block;
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #1976d2; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
+        .btn-green { background: #4caf50; }
+        .btn-green:hover { background: #388e3c; }
+        .btn-gray { background: #9e9e9e; }
+        .btn-gray:hover { background: #757575; }
+        
+        .info { background: #f5f5f5; border-left: 4px solid #2196f3; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 20px 0; text-align: left; font-size: 0.9em; }
+        .footer { margin-top: 25px; font-size: 0.85em; color: #888; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">⚖️</div>
+        <h1>Юридический ИИ-Консультант</h1>
+        <p class="subtitle">Нажмите кнопку ниже для входа</p>
+        
+        <div id="link-box" class="loading">https://resulted-build-tasks-subcommittee.trycloudflare.com</div>
+        
+        <div>
+            <button id="openBtn" class="btn btn-green" onclick="openAgent()" disabled>🚀 Войти в консультанта</button>
+            <button id="copyBtn" class="btn" onclick="copyUrl()" disabled>📋 Копировать</button>
+        </div>
+        
+        <div class="info">
+            <strong>Как пользоваться:</strong><br>
+            1. Нажмите «🚀 Войти»<br>
+            2. Введите логин/пароль<br>
+            3. Напишите вопрос или прикрепите файл<br>
+            4. Получите ответ с законами
+        </div>
+        
+        <div class="footer">© 2026 • Ссылка обновляется автоматически</div>
+    </div>
+
+    <script>
+        // Простая и надёжная логика
+        const LINK_BOX = document.getElementById('link-box');
+        const OPEN_BTN = document.getElementById('openBtn');
+        const COPY_BTN = document.getElementById('copyBtn');
+        
+        // Получаем ссылку из HTML (её вставил launcher.py)
+        function getLink() {
+            return LINK_BOX.innerText.trim();
+        }
+        
+        // Проверяем, что ссылка валидная
+        function isValid(link) {
+            return link && 
+                   link.startsWith('https://') && 
+                   link.includes('trycloudflare.com') &&
+                   !link.includes('Загрузка') &&
+                   !link.includes('<!--');
+        }
+        
+        // Открыть агента
+        function openAgent() {
+            const link = getLink();
+            if (isValid(link)) {
+                window.open(link, '_blank', 'noopener,noreferrer');
+            }
+        }
+        
+        // Копировать ссылку
+        function copyUrl() {
+            const link = getLink();
+            if (isValid(link)) {
+                navigator.clipboard.writeText(link).then(() => {
+                    const old = COPY_BTN.textContent;
+                    COPY_BTN.textContent = '✅ Скопировано!';
+                    setTimeout(() => { COPY_BTN.textContent = old; }, 2000);
+                });
+            }
+        }
+        
+        // Инициализация при загрузке
+        window.addEventListener('DOMContentLoaded', function() {
+            const link = getLink();
+            
+            if (isValid(link)) {
+                // Ссылка найдена — активируем кнопки
+                LINK_BOX.textContent = link;
+                LINK_BOX.className = '';
+                OPEN_BTN.disabled = false;
+                COPY_BTN.disabled = false;
+            } else {
+                // Ссылка не найдена — показываем ошибку
+                LINK_BOX.textContent = 'https://resulted-build-tasks-subcommittee.trycloudflare.com. Обновите страницу (Ctrl+F5) или подождите 30 сек.';
+                LINK_BOX.className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>
