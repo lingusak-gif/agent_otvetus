@@ -30,7 +30,6 @@
         h1 { color: #1a1a2e; margin: 0 0 8px 0; font-size: 1.6em; }
         .subtitle { color: #666; margin-bottom: 25px; font-size: 1.05em; }
         
-        /* Главная кнопка */
         .btn-primary {
             display: inline-block;
             background: #2e7d32;
@@ -58,7 +57,6 @@
             box-shadow: none;
         }
         
-        /* Инструкция */
         .info {
             background: #f8f9fa;
             border-left: 4px solid #2196f3;
@@ -73,7 +71,6 @@
         .info ul { padding-left: 20px; margin: 0; }
         .info li { margin: 4px 0; }
         
-        /* Важно */
         .warning {
             font-size: 0.9em;
             color: #666;
@@ -82,14 +79,12 @@
         }
         .warning strong { color: #c62828; }
         
-        /* Footer */
         .footer {
             font-size: 0.85em;
             color: #999;
             margin-top: 15px;
         }
         
-        /* Кнопка обновления ссылки (в углу, для админа) */
         #refresh-btn {
             position: fixed;
             top: 12px;
@@ -110,7 +105,6 @@
             transform: translateY(-1px);
         }
         
-        /* Мобильная адаптация */
         @media (max-width: 480px) {
             .card { padding: 30px 20px; }
             h1 { font-size: 1.4em; }
@@ -120,7 +114,6 @@
     </style>
 </head>
 <body>
-    <!-- Кнопка обновления (видна только если ссылка не загрузилась) -->
     <button id="refresh-btn" onclick="refreshPage()" style="display:none;">🔄 Обновить</button>
 
     <div class="card">
@@ -128,28 +121,24 @@
         <h1>Юридический ИИ-Консультант</h1>
         <p class="subtitle">Профессиональная помощь онлайн</p>
         
-        <!-- Скрытый блок со ссылкой (нужен для работы кнопки) -->
         <div id="tunnel-link" style="display:none;">
-            https://grateful-diversity-andrews-freight.trycloudflare.com?v=3201
+            https://favourites-within-scanned-spare.trycloudflare.com?v=2726
         </div>
         
-        <!-- Главная кнопка -->
         <button id="enterBtn" class="btn-primary" onclick="openAgent()" disabled>
             🚀 Войти в консультанта
         </button>
         
-        <!-- Инструкция -->
         <div class="info">
             <strong>📋 Как получить консультацию:</strong>
             <ul>
                 <li>Нажмите «🚀 Войти в консультанта» выше</li>
-                <li>Введите логин и пароль (выдал специалист)</li>
+                <li>Введите логин и пароль или зарегистрируйтесь при первом обращении (запомните свои логин и пароль)</li>
                 <li>Напишите вопрос или прикрепите файл (PDF, DOCX, фото)</li>
                 <li>Получите ответ со ссылками на законы и план действий</li>
             </ul>
         </div>
         
-        <!-- Важно -->
         <div class="warning">
             <strong>⚠️ Обратите внимание:</strong><br>
             Консультация носит информационный характер.<br>
@@ -160,17 +149,14 @@
     </div>
 
     <script>
-        // Простая и надёжная логика
         const LINK_HIDDEN = document.getElementById('tunnel-link');
         const ENTER_BTN = document.getElementById('enterBtn');
         const REFRESH_BTN = document.getElementById('refresh-btn');
         
-        // Получаем ссылку из скрытого блока
         function getLink() {
             return LINK_HIDDEN ? LINK_HIDDEN.innerText.trim() : '';
         }
         
-        // Проверяем валидность ссылки
         function isValid(link) {
             return link && 
                    link.startsWith('https://') && 
@@ -178,7 +164,6 @@
                    !link.includes('<!--');
         }
         
-        // Открыть агента
         function openAgent() {
             const link = getLink();
             if (isValid(link)) {
@@ -186,24 +171,19 @@
             }
         }
         
-        // Обновить страницу с обходом кэша
         function refreshPage() {
             REFRESH_BTN.textContent = '🔄...';
             REFRESH_BTN.disabled = true;
             location.href = location.href.split('?')[0] + '?t=' + Date.now();
         }
         
-        // Инициализация
         window.addEventListener('DOMContentLoaded', function() {
             const link = getLink();
-            
             if (isValid(link)) {
-                // Ссылка найдена — активируем кнопку
                 ENTER_BTN.disabled = false;
             } else {
-                // Ссылка не найдена — показываем кнопку обновления
                 REFRESH_BTN.style.display = 'block';
-                ENTER_BTN.textContent = 'https://grateful-diversity-andrews-freight.trycloudflare.com?v=3201';
+                ENTER_BTN.textContent = 'https://favourites-within-scanned-spare.trycloudflare.com?v=2726';
             }
         });
     </script>
