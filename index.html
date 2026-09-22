@@ -4,126 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Юридический ИИ-Консультант — Вход</title>
-    <meta http-equiv="refresh" content="30">
+    <!-- 🔥 Жёсткие заголовки против кэша -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!-- 🔄 Авто-обновление каждые 10 сек, пока ссылка не появится -->
+    <meta http-equiv="refresh" content="10">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            color: #333;
-        }
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            max-width: 480px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-        .logo { font-size: 3em; margin-bottom: 15px; }
-        h1 { color: #1a1a2e; margin: 0 0 8px 0; font-size: 1.6em; }
-        .subtitle { color: #666; margin-bottom: 25px; font-size: 1.05em; }
-        .btn-primary {
-            display: inline-block;
-            background: #2e7d32;
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 1.1em;
-            font-weight: 700;
-            cursor: pointer;
-            margin: 10px 0 25px;
-            transition: all 0.2s;
-            width: 100%;
-            max-width: 320px;
-        }
-        .btn-primary:hover {
-            background: #1b5e20;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(46,125,50,0.4);
-        }
-        .btn-primary:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        .info {
-            background: #f8f9fa;
-            border-left: 4px solid #2196f3;
-            padding: 16px 20px;
-            border-radius: 0 8px 8px 0;
-            margin: 0 0 20px;
-            text-align: left;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        .info strong { display: block; margin-bottom: 8px; color: #1a1a2e; }
-        .info ul { padding-left: 20px; margin: 0; }
-        .info li { margin: 4px 0; }
-        .warning {
-            font-size: 0.9em;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 25px;
-        }
-        .warning strong { color: #c62828; }
-        .footer {
-            font-size: 0.85em;
-            color: #999;
-            margin-top: 15px;
-        }
-        #refresh-btn {
-            position: fixed;
-            top: 12px;
-            right: 12px;
-            background: rgba(25,118,210,0.9);
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85em;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: all 0.2s;
-        }
-        #refresh-btn:hover {
-            background: #1565c0;
-            transform: translateY(-1px);
-        }
-        @media (max-width: 480px) {
-            .card { padding: 30px 20px; }
-            h1 { font-size: 1.4em; }
-            .btn-primary { padding: 14px 24px; font-size: 1em; }
-            .info { font-size: 0.9em; padding: 12px 16px; }
-        }
+        *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;color:#333}.card{background:#fff;border-radius:20px;padding:40px 30px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center}.logo{font-size:3em;margin-bottom:15px}h1{color:#1a1a2e;margin:0 0 8px;font-size:1.6em}.subtitle{color:#666;margin-bottom:25px;font-size:1.05em}.btn-primary{display:inline-block;background:#2e7d32;color:#fff;border:none;padding:16px 32px;border-radius:12px;font-size:1.1em;font-weight:700;cursor:pointer;margin:10px 0 25px;transition:all .2s;width:100%;max-width:320px}.btn-primary:hover{background:#1b5e20;transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,125,50,.4)}.btn-primary:disabled{background:#ccc;cursor:not-allowed;transform:none;box-shadow:none}.info{background:#f8f9fa;border-left:4px solid #2196f3;padding:16px 20px;border-radius:0 8px 8px 0;margin:0 0 20px;text-align:left;font-size:.95em;line-height:1.6}.info strong{display:block;margin-bottom:8px;color:#1a1a2e}.info ul{padding-left:20px;margin:0}.info li{margin:4px 0}.warning{font-size:.9em;color:#666;line-height:1.5;margin-bottom:25px}.warning strong{color:#c62828}.footer{font-size:.85em;color:#999;margin-top:15px}#refresh-btn{position:fixed;top:12px;right:12px;background:rgba(25,118,210,.9);color:#fff;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:.85em;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:all .2s}#refresh-btn:hover{background:#1565c0;transform:translateY(-1px)}@media(max-width:480px){.card{padding:30px 20px}h1{font-size:1.4em}.btn-primary{padding:14px 24px;font-size:1em}.info{font-size:.9em;padding:12px 16px}}
     </style>
 </head>
 <body>
     <button id="refresh-btn" onclick="refreshPage()" style="display:none;">🔄 Обновить</button>
-
     <div class="card">
         <div class="logo">⚖️</div>
         <h1>Юридический ИИ-Консультант</h1>
         <p class="subtitle">Профессиональная помощь онлайн</p>
-        
-        <!-- 🔗 Скрытый блок для ссылки (placeholder для launcher.py) -->
-        <div id="tunnel-link" style="display:none;">
-            https://genome-workshops-developers-mas.trycloudflare.com?v=1680
-        </div>
-        
-        <button id="enterBtn" class="btn-primary" onclick="openAgent()" disabled>
-            🚀 Войти в консультанта
-        </button>
-        
+        <div id="tunnel-link" style="display:none">https://radical-explaining-attitude-gentleman.trycloudflare.com?v=8422</div>
+        <button id="enterBtn" class="btn-primary" onclick="openAgent()" disabled>🚀 Войти в консультанта</button>
         <div class="info">
             <strong>📋 Как получить консультацию:</strong>
             <ul>
@@ -133,53 +31,21 @@
                 <li>Получите ответ со ссылками на законы и план действий</li>
             </ul>
         </div>
-        
-        <div class="warning">
-            <strong>⚠️ Обратите внимание:</strong><br>
-            Консультация носит информационный характер.<br>
-            Не загружайте документы с чужими персональными данными.
-        </div>
-        
+        <div class="warning"><strong>⚠️ Обратите внимание:</strong><br>Консультация носит информационный характер.<br>Не загружайте документы с чужими персональными данными.</div>
         <div class="footer">© 2026 • Работает на базе OpenAI GPT-4o</div>
     </div>
-
     <script>
-        const LINK_HIDDEN = document.getElementById('tunnel-link');
-        const ENTER_BTN = document.getElementById('enterBtn');
-        const REFRESH_BTN = document.getElementById('refresh-btn');
-        
-        function getLink() {
-            return LINK_HIDDEN ? LINK_HIDDEN.innerText.trim() : '';
-        }
-        
-        function isValid(link) {
-            return link && 
-                   link.startsWith('https://') && 
-                   link.includes('trycloudflare.com') &&
-                   !link.includes('<!--');
-        }
-        
-        function openAgent() {
-            const link = getLink();
-            if (isValid(link)) {
-                window.open(link, '_blank', 'noopener,noreferrer');
-            }
-        }
-        
-        function refreshPage() {
-            REFRESH_BTN.textContent = '🔄...';
-            REFRESH_BTN.disabled = true;
-            location.href = location.href.split('?')[0] + '?t=' + Date.now();
-        }
-        
-        window.addEventListener('DOMContentLoaded', function() {
-            const link = getLink();
-            if (isValid(link)) {
-                ENTER_BTN.disabled = false;
-            } else {
-                REFRESH_BTN.style.display = 'block';
-                ENTER_BTN.textContent = 'https://genome-workshops-developers-mas.trycloudflare.com?v=1680';
-            }
+        const LINK=document.getElementById('tunnel-link'),BTN=document.getElementById('enterBtn'),REFRESH=document.getElementById('refresh-btn');
+        function getLink(){return LINK?LINK.innerText.trim():''}
+        function isValid(l){return l&&l.startsWith('https://')&&l.includes('trycloudflare.com')&&!l.includes('<!--')}
+        function openAgent(){const l=getLink();if(isValid(l))window.open(l,'_blank','noopener,noreferrer')}
+        function refreshPage(){REFRESH.textContent='🔄...';REFRESH.disabled=true;location.href=location.href.split('?')[0]+'?t='+Date.now()}
+        window.addEventListener('DOMContentLoaded',()=>{
+            const l=getLink();
+            if(isValid(l)){BTN.disabled=false;REFRESH.style.display='none'}
+            else{REFRESH.style.display='block';BTN.textContent='⏳ Проверка...';
+                // 🔁 Пытаемся найти ссылку динамически (если GitHub Pages ещё не обновился)
+                setTimeout(()=>{const l2=getLink();if(isValid(l2)){BTN.disabled=false;REFRESH.style.display='none';BTN.textContent='🚀 Войти в консультанта'}},3000)}
         });
     </script>
 </body>
