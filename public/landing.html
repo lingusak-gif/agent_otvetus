@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ИИ-юрист онлайн 24/7. Консультация по гражданскому, трудовому, семейному праву. Ответ за 2 минуты. Загрузите документы — получите анализ.">
+    <title>ИИ-юрист онлайн — консультация за 2 минуты | От 1 500 ₽</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        /* Container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        header .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        .price-tag {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(76,175,80,0.3);
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 15px 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,107,0.5);
+            background: #ff5252;
+        }
+        .cta-secondary {
+            background: transparent;
+            border: 3px solid white;
+            box-shadow: none;
+        }
+        .cta-secondary:hover {
+            background: white;
+            color: #1e3c72;
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 50px;
+            color: #1e3c72;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .feature-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* How it works */
+        .how-it-works {
+            padding: 80px 0;
+        }
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            text-align: center;
+            padding: 30px;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #1e3c72;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .step h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+        
+        /* Practice areas */
+        .practice-areas {
+            padding: 80px 0;
+            background: #1e3c72;
+            color: white;
+        }
+        .practice-areas .section-title {
+            color: white;
+        }
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .area-card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .area-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px 0 30px;
+            text-align: center;
+        }
+        .contacts {
+            margin-bottom: 25px;
+        }
+        .contacts a {
+            color: #4fc3f7;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        .contacts a:hover {
+            text-decoration: underline;
+        }
+        .legal-info {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-top: 20px;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            header .subtitle { font-size: 1.1em; }
+            .section-title { font-size: 1.7em; }
+            .price-tag { font-size: 1.2em; padding: 10px 25px; }
+            .cta-button { 
+                display: block; 
+                margin: 10px auto; 
+                max-width: 90%;
+                font-size: 1.1em;
+                padding: 16px 30px;
+            }
+            .features { padding: 50px 0; }
+            .features-grid { grid-template-columns: 1fr; }
+            .steps { flex-direction: column; align-items: center; }
+            .step { width: 100%; }
+            .areas-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 1.7em; }
+        }
+        
+        /* Trust badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            color: #666;
+        }
+        .badge-icon {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="container">
+            <h1>⚖️ ИИ-юрист онлайн 24/7</h1>
+            <p class="subtitle">Профессиональная юридическая консультация за 2 минуты<br>на основе актуального законодательства РФ</p>
+            <div class="price-tag">от 1 500 ₽</div>
+            <br>
+            <a href="https://lingusak-gif.github.io/agent_otvetus/" class="cta-button">🚀 Получить консультацию</a>
+            <br>
+            <a href="tel:+79999999999" class="cta-button cta-secondary">📞 Позвонить</a>
+            
+            <div class="trust-badges">
+                <div class="badge"><span class="badge-icon">🔒</span> Конфиденциально</div>
+                <div class="badge"><span class="badge-icon"></span> Ответ за 2 мин</div>
+                <div class="badge"><span class="badge-icon">📄</span> Анализ документов</div>
+                <div class="badge"><span class="badge-icon">✅</span> Работает 24/7</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают наш сервис</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Мгновенный ответ</h3>
+                    <p>Получите консультацию за 2 минуты без ожидания и записи. Работаем круглосуточно.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Анализ документов</h3>
+                    <p>Загрузите PDF, Word, фото документов — ИИ проанализирует и даст рекомендации.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Точные решения</h3>
+                    <p>Ответы со ссылками на статьи законов РФ и пошаговый план действий.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Доступная цена</h3>
+                    <p>Консультация от 1 500 ₽. Экономьте время и деньги на визитах к юристу.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Полная конфиденциальность</h3>
+                    <p>Ваши данные и документы защищены. Никакой передачи информации третьим лицам.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Удобно с телефона</h3>
+                    <p>Работает на любом устройстве. Консультируйтесь из дома, офиса или в дороге.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Регистрация</h3>
+                    <p>Создайте аккаунт за 30 секунд. Укажите имя и пароль.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Оплата</h3>
+                    <p>Оплатите консультацию онлайн (карта, СБП, электронные кошельки).</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Вопрос</h3>
+                    <p>Опишите ситуацию или загрузите документы для анализа.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Решение</h3>
+                    <p>Получите ответ со ссылками на законы и план действий.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section class="practice-areas">
+        <div class="container">
+            <h2 class="section-title">Области права</h2>
+            <div class="areas-grid">
+                <div class="area-card">
+                    <h3>👨‍👩‍👧 Семейное право</h3>
+                    <p>Развод, алименты, раздел имущества, опека, брачный договор</p>
+                </div>
+                <div class="area-card">
+                    <h3>💼 Трудовое право</h3>
+                    <p>Увольнение, отпуск, больничные, трудовые споры, компенсации</p>
+                </div>
+                <div class="area-card">
+                    <h3>🏠 Жилищное право</h3>
+                    <p>Недвижимость, аренда, ЖКХ, выселение, приватизация</p>
+                </div>
+                <div class="area-card">
+                    <h3> Защита прав потребителей</h3>
+                    <p>Возврат товара, некачественные услуги, компенсации, претензии</p>
+                </div>
+                <div class="area-card">
+                    <h3> Автоюрист</h3>
+                    <p>ДТП, страховые выплаты, споры с ГИБДД, лишение прав</p>
+                </div>
+                <div class="area-card">
+                    <h3>📋 Гражданские споры</h3>
+                    <p>Договоры, долги, расписки, наследство, дарение</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="testimonial-card">
+                <p class="testimonial-text">«Загрузил договор купли-продажи квартиры. ИИ нашёл 3 спорных пункта, которые могли бы привести к проблемам. Сэкономил кучу времени и денег!»</p>
+                <div class="testimonial-author">— Алексей М., Москва</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">«Нужна была срочная консультация по алиментам. Через 5 минут получила развёрнутый ответ со ссылками на законы. Очень удобно!»</p>
+                <div class="testimonial-author">— Елена К., Санкт-Петербург</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">«Пользуюсь уже третий раз. Быстро, профессионально, без лишней воды. Рекомендую!»</p>
+                <div class="testimonial-author">— Дмитрий С., Казань</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Готовы получить консультацию?</h2>
+            <p>Присоединяйтесь к тысячам довольных клиентов. Первая консультация — от 1 500 ₽</p>
+            <a href="https://lingusak-gif.github.io/agent_otvetus/" class="cta-button" style="background: white; color: #764ba2;">🚀 Начать сейчас</a>
+            <br><br>
+            <p style="font-size: 0.95em; opacity: 0.9;">⏱️ Среднее время ответа: 2 минуты<br>🔒 100% конфиденциально</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="contacts">
+                <a href="tel:+79999999999">📞 +7 (999) 999-99-99</a>
+                <a href="mailto:info@legal-ai.ru">️ info@legal-ai.ru</a>
+                <a href="https://t.me/your_username" target="_blank"> Telegram</a>
+                <a href="https://wa.me/79999999999" target="_blank"> WhatsApp</a>
+            </div>
+            <p><strong>ИИ-юрист онлайн</strong><br>Профессиональная юридическая помощь 24/7</p>
+            <div class="legal-info">
+                <p>© 2026 Все права защищены<br>
+                <a href="#" style="color: #4fc3f7;">Политика конфиденциальности</a> | 
+                <a href="#" style="color: #4fc3f7;">Договор оферты</a></p>
+                <p style="margin-top: 15px; font-size: 0.85em;">
+                    ⚠️ Информация носит справочный характер и не является публичной офертой.<br>
+                    Для получения юридической услуги необходима оплата и активация аккаунта.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Yandex.Metrika (замените на ваш номер) -->
+    <script>
+        // Раскомментируйте и замените XXXXXXXX на ваш номер счётчика
+        /*
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(XXXXXXXX, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+        */
+    </script>
+
+</body>
+</html>

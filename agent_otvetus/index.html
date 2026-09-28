@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юридический Консультант</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: linear-gradient(135deg, #1e293b, #0f172a); color: #fff; }
+        .card { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 16px; text-align: center; max-width: 500px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .emoji { font-size: 64px; margin-bottom: 15px; }
+        h1 { margin: 0 0 20px; font-size: 28px; }
+        p { font-size: 18px; line-height: 1.6; opacity: 0.9; margin: 10px 0; }
+        .status { display: inline-block; padding: 8px 16px; background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; border-radius: 20px; font-size: 14px; margin-top: 20px; }
+        .refresh-btn { margin-top: 25px; padding: 12px 24px; background: #3b82f6; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .refresh-btn:hover { background: #2563eb; transform: translateY(-2px); }
+        .footer { margin-top: 30px; font-size: 14px; opacity: 0.6; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="emoji">💤</div>
+        <h1>Юридический Консультант</h1>
+        <p>В данный момент агент <b>временно недоступен</b>.</p>
+        <p>Сервер выключен или находится на обслуживании.</p>
+        <div class="status">● Оффлайн</div>
+        <br>
+        <button class="refresh-btn" onclick="location.reload()">🔄 Проверить доступность</button>
+        <div class="footer">Попробуйте зайти позже или свяжитесь с администратором</div>
+    </div>
+    <script>
+        // Автообновление каждые 60 секунд
+        setTimeout(() => location.reload(), 60000);
+    </script>
+</body>
+</html>

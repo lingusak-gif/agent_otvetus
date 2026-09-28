@@ -1,0 +1,7 @@
+Настройка API
+В этом разделе находятся данные для интеграции GigaChat в ваш продукт через API.
+
+Client ID	
+01a0ddbb-4507-72d2-9718-e2fd2a9abb16
+
+Authorization Key	MDFhMGRkYmItNDUwNy03MmQyLTk3MTgtZTJmZDJhOWFiYjE2OjJiYmYwYWZjLTJhMjUtNGNmMi05YmNmLWQzODk2Yzc4MTZkOQ==

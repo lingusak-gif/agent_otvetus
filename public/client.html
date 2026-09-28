@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юридический ИИ-Консультант — Вход</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .logo { font-size: 3em; text-align: center; margin-bottom: 15px; }
+        h1 { 
+            color: #1a1a2e; 
+            text-align: center;
+            margin: 0 0 8px 0; 
+            font-size: 1.6em; 
+        }
+        .subtitle { 
+            color: #666; 
+            text-align: center;
+            margin-bottom: 25px; 
+            font-size: 1.05em; 
+        }
+        .btn-primary {
+            display: block;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 10px auto 25px;
+            transition: all 0.2s;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+        }
+        .btn-primary:hover {
+            background: #1b5e20;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46,125,50,0.4);
+        }
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .info {
+            background: #f8f9fa;
+            border-left: 4px solid #2196f3;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 0 0 20px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        .info strong { 
+            display: block; 
+            margin-bottom: 8px; 
+            color: #1a1a2e; 
+        }
+        .info ul { 
+            padding-left: 20px; 
+            margin: 0; 
+        }
+        .info li { margin: 4px 0; }
+        .warning {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .warning strong { color: #c62828; }
+        .footer {
+            font-size: 0.85em;
+            color: #999;
+            text-align: center;
+            margin-top: 15px;
+        }
+        #tunnel-link { display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">⚖️</div>
+        <h1>Юридический ИИ-Консультант</h1>
+        <p class="subtitle">Профессиональная помощь онлайн</p>
+        
+        <div id="tunnel-link">https://portland-exclude-ethical-financial.trycloudflare.com?v=5038</div>
+        
+        <button id="enterBtn" class="btn-primary" onclick="openAgent()" disabled>
+             Войти в консультанта
+        </button>
+        
+        <div class="info">
+            <strong>📋 Как получить консультацию:</strong>
+            <ul>
+                <li>Нажмите « Войти в консультанта» выше</li>
+                <li>Введите логин и пароль или зарегистрируйтесь при первом обращении</li>
+                <li>Напишите вопрос или прикрепите файл (PDF, DOCX, фото)</li>
+                <li>Получите ответ со ссылками на законы</li>
+            </ul>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Обратите внимание:</strong><br>
+            Консультация носит информационный характер.<br>
+            Не загружайте документы с чужими персональными данными.
+        </div>
+        
+        <div class="footer">© 2026 • Работает на базе OpenAI GPT-4o</div>
+    </div>
+
+    <script>
+        const tunnelLink = document.getElementById('tunnel-link');
+        const enterBtn = document.getElementById('enterBtn');
+        
+        function getLink() {
+            return tunnelLink ? tunnelLink.innerText.trim() : '';
+        }
+        
+        function isValid(link) {
+            return link && 
+                   link.startsWith('https://') && 
+                   link.includes('trycloudflare.com') &&
+                   !link.includes('<!--');
+        }
+        
+        function openAgent() {
+            const link = getLink();
+            if (isValid(link)) {
+                window.open(link, '_blank', 'noopener,noreferrer');
+            }
+        }
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            const link = getLink();
+            console.log('Link from tunnel:', link);
+            if (isValid(link)) {
+                enterBtn.disabled = false;
+            } else {
+                enterBtn.textContent = '⏳ Загрузка...';
+                setTimeout(() => {
+                    const link2 = getLink();
+                    if (isValid(link2)) {
+                        enterBtn.disabled = false;
+                        enterBtn.textContent = ' Войти в консультанта';
+                    }
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

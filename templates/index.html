@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юридический ИИ-Консультант</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Стили для бейджа туннеля -->
+    <style>
+        #tunnel-badge {
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e3f2fd;
+            border: 2px solid #1976d2;
+            padding: 6px 14px;
+            border-radius: 24px;
+            text-align: center;
+            font-size: 0.85em;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            max-width: 95vw;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #tunnel-badge.hidden {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+            pointer-events: none;
+        }
+        #tunnel-badge span { font-size: 1.1em; }
+        #tunnel-badge strong {
+            color: #0d47a1;
+            word-break: break-all;
+            max-width: 280px;
+            display: inline-block;
+        }
+        #tunnel-badge .btn-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        #tunnel-badge button {
+            background: #1976d2;
+            color: #ffffff !important;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #tunnel-badge button:hover {
+            background: #1565c0;
+            transform: translateY(-1px);
+        }
+        #tunnel-badge .btn-open {
+            background: #2e7d32;
+        }
+        #tunnel-badge .btn-open:hover {
+            background: #1b5e20;
+        }
+        #tunnel-badge .btn-hide {
+            background: #757575;
+            padding: 5px 10px;
+        }
+        #tunnel-badge .btn-hide:hover {
+            background: #616161;
+        }
+        .container { padding-top: 65px !important; }
+        
+        /* Кнопка показа ссылки (в углу, всегда видна, если бейдж скрыт) */
+        #show-tunnel-btn {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: none;
+            transition: all 0.2s;
+        }
+        #show-tunnel-btn:hover {
+            background: #1565c0;
+            transform: translateY(-1px);
+        }
+        #show-tunnel-btn.visible {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        @media (max-width: 600px) {
+            #tunnel-badge { top: 8px; padding: 5px 10px; font-size: 0.8em; border-radius: 20px; }
+            #tunnel-badge strong { max-width: 200px; font-size: 0.9em; }
+            #tunnel-badge button { padding: 4px 10px; font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 🔗 ССЫЛКА ТУННЕЛЯ (умный бейдж) -->
+    <div id="tunnel-badge">
+        <span>🌐</span>
+        <strong id="tunnel-url">https://rubber-expo-nicole-implementation.trycloudflare.com</strong>
+        <div class="btn-group">
+            <button class="btn-open" onclick="openTunnel()">🚀 Открыть</button>
+            <button class="btn-copy" onclick="copyTunnelUrl()">📋 Копировать</button>
+            <button class="btn-hide" onclick="hideBadge()">✕ Скрыть</button>
+        </div>
+    </div>
+    
+    <!-- Кнопка показа ссылки (в углу) -->
+    <button id="show-tunnel-btn" onclick="showBadge()">
+        🔗 Ссылка
+    </button>
+
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-balance-scale"></i> Юридический Консультант</h1>
+            <div class="status"><span class="status-dot"></span> Онлайн</div>
+        </header>
+
+        <div class="chat-area" id="chat-area">
+            <div class="message bot">
+                <div class="avatar">🤖</div>
+                <div class="text">
+                    Здравствуйте! Я ваш виртуальный юрист.<br>
+                    Расскажите вашу ситуацию, и я постараюсь помочь.
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                <textarea id="message-input" placeholder="Введите вопрос или прикрепите файл..." rows="2" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; resize: none; outline: none;"></textarea>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <label for="file-input" style="cursor: pointer; background: #f1f3f5; padding: 6px 12px; border-radius: 6px; font-size: 0.9rem; color: #555; border: 1px solid #ddd;">
+                        📎 Прикрепить файл
+                    </label>
+                    <input type="file" id="file-input" accept="image/*,.pdf,.doc,.docx,.txt" style="display: none;">
+                    <span id="file-name" style="font-size: 0.85rem; color: #666;"></span>
+                </div>
+            </div>
+            <button id="send-btn" onclick="sendMessage()" style="width: 50px; height: 50px; border: none; background: #007bff; color: white; border-radius: 8px; cursor: pointer; font-size: 1.2rem;">➤</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // === Управление бейджем туннеля ===
+        
+        // Открыть ссылку в новом окне
+        function openTunnel() {
+            const url = document.getElementById('tunnel-url').innerText.trim();
+            if (url && url.includes('trycloudflare.com')) {
+                window.open(url, '_blank');
+            }
+        }
+        
+        // Копировать ссылку в буфер
+        function copyTunnelUrl() {
+            const url = document.getElementById('tunnel-url').innerText.trim();
+            const btn = document.querySelector('.btn-copy');
+            if (url && url.includes('trycloudflare.com')) {
+                navigator.clipboard.writeText(url).then(() => {
+                    const originalText = btn.textContent;
+                    btn.textContent = '✅';
+                    btn.style.background = '#2e7d32';
+                    setTimeout(() => { btn.textContent = '📋 Копировать'; btn.style.background = '#1976d2'; }, 2000);
+                }).catch(() => {
+                    btn.textContent = '❌';
+                    setTimeout(() => { btn.textContent = '📋 Копировать'; }, 2000);
+                });
+            }
+        }
+        
+        // Скрыть бейдж
+        function hideBadge() {
+            const badge = document.getElementById('tunnel-badge');
+            const showBtn = document.getElementById('show-tunnel-btn');
+            badge.classList.add('hidden');
+            showBtn.classList.add('visible');
+            // Сохраняем выбор в localStorage, чтобы не показывать при перезагрузке
+            localStorage.setItem('tunnelBadgeHidden', 'true');
+        }
+        
+        // Показать бейдж снова
+        function showBadge() {
+            const badge = document.getElementById('tunnel-badge');
+            const showBtn = document.getElementById('show-tunnel-btn');
+            badge.classList.remove('hidden');
+            showBtn.classList.remove('visible');
+            localStorage.setItem('tunnelBadgeHidden', 'false');
+        }
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const badge = document.getElementById('tunnel-badge');
+            const showBtn = document.getElementById('show-tunnel-btn');
+            const url = document.getElementById('tunnel-url').innerText.trim();
+            
+            // Если в localStorage сохранено "скрыть" — скрываем бейдж
+            if (localStorage.getItem('tunnelBadgeHidden') === 'true') {
+                badge.classList.add('hidden');
+                showBtn.classList.add('visible');
+            }
+            
+            // Если ссылка ещё не обновилась (placeholder) — скрываем бейдж временно
+            if (!url || url === 'https://rubber-expo-nicole-implementation.trycloudflare.com' || !url.includes('trycloudflare.com')) {
+                badge.classList.add('hidden');
+                // Показываем кнопку "🔗 Ссылка" с индикатором загрузки
+                showBtn.innerHTML = '🔄 Загрузка...';
+                showBtn.classList.add('visible');
+                showBtn.disabled = true;
+                showBtn.style.background = '#757575';
+            }
+        });
+    </script>
+</body>
+</html>
